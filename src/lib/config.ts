@@ -178,8 +178,8 @@ export const categoryConfigs: CategoryConfig[] = [
 
 export const siteConfig: SiteConfig = {
   name: "Vengayam",
-  description: "India's finest source of satirical news",
-  descriptionTamil: "இந்தியாவின் சிறந்த நையாண்டி செய்தி ஆதாரம்",
+  description: "India's finest source of news",
+  descriptionTamil: "இந்தியாவின் சிறந்த செய்தித்தளம் ",
   url: "https://vengayam.in",
   author: "Vengayam Staff",
   defaultLanguage: "en",

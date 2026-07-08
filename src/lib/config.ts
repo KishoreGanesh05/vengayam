@@ -20,7 +20,6 @@ export interface Article {
   slug: string;
   title: string;
   subtitle?: string;
-  author: string;
   publishedAt: string; // ISO 8601
   updatedAt?: string;
   language: Language;
@@ -41,7 +40,6 @@ export interface ArticleMeta {
   slug: string;
   title: string;
   subtitle?: string;
-  author: string;
   publishedAt: string;
   language: Language;
   category: Category;
@@ -54,7 +52,6 @@ export interface ArticleMeta {
 export interface ArticleFrontmatter {
   title: string; // Required, max 120 chars
   subtitle?: string; // Optional, max 200 chars
-  author: string; // Required, defaults to site author
   publishedAt: string; // Required, ISO 8601 date
   updatedAt?: string; // Optional, ISO 8601 date
   language: Language; // Required, "en" or "ta" — inferred from content directory

@@ -65,10 +65,6 @@ export function parseFrontmatter(
     errors.push("'title' is required and must be a non-empty string");
   }
 
-  if (!data.author || typeof data.author !== "string" || data.author.trim() === "") {
-    errors.push("'author' is required and must be a non-empty string");
-  }
-
   if (!data.publishedAt) {
     errors.push("'publishedAt' is required");
   }
@@ -150,7 +146,6 @@ export function parseFrontmatter(
   // --- Build validated frontmatter object ---
   const frontmatter: ArticleFrontmatter = {
     title: data.title.trim(),
-    author: data.author.trim(),
     publishedAt: String(data.publishedAt),
     category: data.category as Category,
     excerpt: data.excerpt.trim(),
@@ -253,7 +248,6 @@ export async function loadAllArticles(
       slug,
       title: frontmatter.title,
       subtitle: frontmatter.subtitle,
-      author: frontmatter.author,
       publishedAt: frontmatter.publishedAt,
       language,
       category: frontmatter.category,
@@ -299,7 +293,6 @@ export async function getArticleBySlug(
     slug,
     title: frontmatter.title,
     subtitle: frontmatter.subtitle,
-    author: frontmatter.author,
     publishedAt: frontmatter.publishedAt,
     language,
     category: frontmatter.category,

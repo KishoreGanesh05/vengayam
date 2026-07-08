@@ -24,7 +24,6 @@ function makeMdx(frontmatter: Record<string, unknown>, body: string = "Article b
 
 const baseFrontmatter = {
   title: "Test Article",
-  author: "Test Author",
   publishedAt: "2024-01-10",
   category: "tech",
   tags: ["test"],

@@ -70,7 +70,6 @@ function escapeYaml(str: string): string {
 interface ArticleDef {
   slug: string;
   title: string;
-  author: string;
   publishedAt: string;
   category: Category;
   excerpt: string;
@@ -83,7 +82,6 @@ interface ArticleDef {
 const pastArticleDefArb = fc.record({
   slug: slugArb,
   title: safeString(100),
-  author: safeString(30),
   publishedAt: pastDateArb,
   category: categoryArb,
   excerpt: safeString(200),
@@ -96,7 +94,6 @@ const pastArticleDefArb = fc.record({
 const futureArticleDefArb = fc.record({
   slug: slugArb,
   title: safeString(100),
-  author: safeString(30),
   publishedAt: futureDateArb,
   category: categoryArb,
   excerpt: safeString(200),
@@ -130,7 +127,6 @@ function articleToMdx(article: ArticleDef, language: Language): string {
   return [
     "---",
     `title: "${escapeYaml(article.title)}"`,
-    `author: "${escapeYaml(article.author)}"`,
     `publishedAt: "${article.publishedAt}"`,
     `category: "${article.category}"`,
     `language: "${language}"`,

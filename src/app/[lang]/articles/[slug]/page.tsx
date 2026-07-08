@@ -78,7 +78,6 @@ export async function generateMetadata({
       ],
       type: "article",
       publishedTime: article.publishedAt,
-      authors: [article.author],
       locale: lang === "ta" ? "ta_IN" : "en_US",
     },
     twitter: {
@@ -148,12 +147,8 @@ export default async function ArticlePage({
           </p>
         )}
 
-        {/* Author and date */}
+        {/* Date */}
         <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-          <span className="font-medium text-gray-700 dark:text-gray-200">
-            {article.author}
-          </span>
-          <span aria-hidden="true">·</span>
           <time dateTime={article.publishedAt}>{formattedDate}</time>
         </div>
       </header>

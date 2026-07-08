@@ -72,11 +72,9 @@ export default function FeaturedArticle({
           </p>
         )}
 
-        {/* Date + author */}
+        {/* Date */}
         <div className="flex items-center gap-3 text-sm text-gray-300">
           <time dateTime={article.publishedAt}>{formattedDate}</time>
-          <span className="text-gray-500">·</span>
-          <span>{article.author}</span>
         </div>
       </div>
     </article>

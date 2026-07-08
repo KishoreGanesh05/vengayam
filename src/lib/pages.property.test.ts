@@ -59,7 +59,6 @@ function escapeYaml(str: string): string {
 interface ArticleDef {
   slug: string;
   title: string;
-  author: string;
   publishedAt: string;
   category: Category;
   excerpt: string;
@@ -72,7 +71,6 @@ interface ArticleDef {
 const articleDefArb = fc.record({
   slug: slugArb,
   title: safeString(100),
-  author: safeString(30),
   publishedAt: pastDateArb,
   category: categoryArb,
   excerpt: safeString(200),
@@ -126,7 +124,6 @@ function articleToMdx(article: ArticleDef, language: Language): string {
   return [
     "---",
     `title: "${escapeYaml(article.title)}"`,
-    `author: "${escapeYaml(article.author)}"`,
     `publishedAt: "${article.publishedAt}"`,
     `category: "${article.category}"`,
     `language: "${language}"`,
@@ -259,7 +256,6 @@ describe("Category Page Filtering", () => {
       {
         slug: "tech-article-one",
         title: "Tech News",
-        author: "Writer",
         publishedAt: "2024-01-10",
         category: "tech",
         excerpt: "A tech article",
@@ -270,7 +266,6 @@ describe("Category Page Filtering", () => {
       {
         slug: "politics-article-one",
         title: "Politics News",
-        author: "Writer",
         publishedAt: "2024-01-11",
         category: "politics",
         excerpt: "A politics article",
@@ -281,7 +276,6 @@ describe("Category Page Filtering", () => {
       {
         slug: "tech-article-two",
         title: "More Tech",
-        author: "Writer",
         publishedAt: "2024-01-12",
         category: "tech",
         excerpt: "Another tech article",
@@ -305,7 +299,6 @@ describe("Category Page Filtering", () => {
       {
         slug: "tech-only",
         title: "Tech Only",
-        author: "Writer",
         publishedAt: "2024-01-10",
         category: "tech",
         excerpt: "A tech article",
@@ -335,7 +328,6 @@ describe("Article Page Rendering (getArticleBySlug)", () => {
     const article: ArticleDef = {
       slug: "test-article",
       title: "Test Article Title",
-      author: "Test Author",
       publishedAt: "2024-03-15",
       category: "local",
       excerpt: "This is a test excerpt",
@@ -350,7 +342,6 @@ describe("Article Page Rendering (getArticleBySlug)", () => {
     expect(result).not.toBeNull();
     expect(result!.slug).toBe("test-article");
     expect(result!.title).toBe("Test Article Title");
-    expect(result!.author).toBe("Test Author");
     expect(result!.category).toBe("local");
     expect(result!.featured).toBe(true);
     expect(result!.content).toContain("Article body content for testing.");
@@ -360,7 +351,6 @@ describe("Article Page Rendering (getArticleBySlug)", () => {
     const article: ArticleDef = {
       slug: "existing-article",
       title: "Existing",
-      author: "Writer",
       publishedAt: "2024-01-10",
       category: "tech",
       excerpt: "Exists",
@@ -383,7 +373,6 @@ describe("Article Page Rendering (getArticleBySlug)", () => {
     const enArticle: ArticleDef = {
       slug: "shared-topic",
       title: "English Version",
-      author: "EN Writer",
       publishedAt: "2024-02-01",
       category: "local",
       excerpt: "English excerpt",
@@ -395,7 +384,6 @@ describe("Article Page Rendering (getArticleBySlug)", () => {
     const taArticle: ArticleDef = {
       slug: "shared-topic",
       title: "Tamil Version",
-      author: "TA Writer",
       publishedAt: "2024-02-01",
       category: "local",
       excerpt: "Tamil excerpt",
@@ -445,7 +433,6 @@ describe("Homepage Featured Articles", () => {
       {
         slug: "featured-one",
         title: "Featured One",
-        author: "Writer",
         publishedAt: "2024-01-15",
         category: "politics",
         excerpt: "Featured article one",
@@ -456,7 +443,6 @@ describe("Homepage Featured Articles", () => {
       {
         slug: "not-featured",
         title: "Regular Article",
-        author: "Writer",
         publishedAt: "2024-01-14",
         category: "tech",
         excerpt: "Not featured",
@@ -467,7 +453,6 @@ describe("Homepage Featured Articles", () => {
       {
         slug: "featured-two",
         title: "Featured Two",
-        author: "Writer",
         publishedAt: "2024-01-13",
         category: "local",
         excerpt: "Featured article two",
@@ -491,7 +476,6 @@ describe("Homepage Featured Articles", () => {
       {
         slug: "older-featured",
         title: "Older Featured",
-        author: "Writer",
         publishedAt: "2024-01-01",
         category: "politics",
         excerpt: "Older",
@@ -502,7 +486,6 @@ describe("Homepage Featured Articles", () => {
       {
         slug: "newer-featured",
         title: "Newer Featured",
-        author: "Writer",
         publishedAt: "2024-01-20",
         category: "tech",
         excerpt: "Newer",

@@ -44,7 +44,6 @@ const coverImageAltArb = nonEmptyString(100);
 const validFrontmatterArb = fc
   .record({
     title: nonEmptyString(120),
-    author: nonEmptyString(50),
     publishedAt: pastDateArb,
     category: categoryArb,
     language: languageArb,
@@ -57,7 +56,6 @@ const validFrontmatterArb = fc
     return [
       "---",
       `title: "${escapeYaml(data.title)}"`,
-      `author: "${escapeYaml(data.author)}"`,
       `publishedAt: "${data.publishedAt}"`,
       `category: "${data.category}"`,
       `language: "${data.language}"`,
@@ -135,7 +133,6 @@ describe("Frontmatter Property Tests", () => {
       const emptyAltFrontmatterArb = fc
         .record({
           title: nonEmptyString(120),
-          author: nonEmptyString(50),
           publishedAt: pastDateArb,
           category: categoryArb,
           language: languageArb,
@@ -147,7 +144,6 @@ describe("Frontmatter Property Tests", () => {
           return [
             "---",
             `title: "${escapeYaml(data.title)}"`,
-            `author: "${escapeYaml(data.author)}"`,
             `publishedAt: "${data.publishedAt}"`,
             `category: "${data.category}"`,
             `language: "${data.language}"`,

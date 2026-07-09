@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { siteConfig, type Language, isValidLanguage } from "@/lib/config";
 import { getTranslations } from "@/lib/i18n";
@@ -33,6 +34,13 @@ export default function Header() {
         <div className="flex items-center justify-between py-4">
           {/* Site name / logo */}
           <Link href={`/${language}/`} className="flex items-center gap-2">
+            <Image
+              src="/images/site/vengayam_logo.png"
+              alt="Vengayam"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
             <span className="font-heading text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
               {siteConfig.name}
             </span>

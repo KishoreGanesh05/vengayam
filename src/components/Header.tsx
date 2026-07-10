@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { siteConfig, type Language, isValidLanguage } from "@/lib/config";
 import { getTranslations } from "@/lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeToggle from "./ThemeToggle";
 
 /**
  * Extracts the current language from the pathname.
@@ -46,8 +47,9 @@ export default function Header() {
             </span>
           </Link>
 
-          {/* Language switcher (desktop) */}
-          <div className="hidden items-center gap-4 md:flex">
+          {/* Language switcher + theme toggle (desktop) */}
+          <div className="hidden items-center gap-2 md:flex">
+            <ThemeToggle />
             <LanguageSwitcher currentLanguage={language} />
           </div>
 
@@ -102,8 +104,9 @@ export default function Header() {
       {mobileMenuOpen && (
         <nav className="border-t border-gray-200 md:hidden dark:border-gray-800" aria-label="Mobile navigation">
           <div className="space-y-1 px-4 py-3">
-            {/* Language switcher (mobile) */}
-            <div className="mb-3 border-b border-gray-100 pb-3 dark:border-gray-800">
+            {/* Language switcher + theme toggle (mobile) */}
+            <div className="mb-3 flex items-center gap-2 border-b border-gray-100 pb-3 dark:border-gray-800">
+              <ThemeToggle />
               <LanguageSwitcher currentLanguage={language} />
             </div>
 
